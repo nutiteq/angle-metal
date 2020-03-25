@@ -4,7 +4,7 @@ Based on ANGLE master branch, current version is [8590cd1c74a576bd99c88f46cf07e3
 
 ### Compiling instructions
 
-Set these parameters for both MetalANGLE and MetalANGLE_ios targets:
+Set these parameters for both 'MetalANGLE' and 'MetalANGLE_ios' targets:
 
 ```
 Valid Architectures: arm64 armv7s x86 x86_64

@@ -20,8 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef enum MGLDrawableColorFormat : int
 {
-    MGLDrawableColorFormatRGBA8888 = 32,
-    MGLDrawableColorFormatRGB565   = 16,
+    MGLDrawableColorFormatRGBA8888  = 32,
+    MGLDrawableColorFormatSRGBA8888 = -32,
+    MGLDrawableColorFormatRGB565    = 16,
 } MGLDrawableColorFormat;
 
 typedef enum MGLDrawableStencilFormat : int
@@ -63,6 +64,9 @@ typedef enum MGLDrawableMultisample : int
 
 // Present the content of OpenGL backed framebuffer on screen as soon as possible.
 - (BOOL)present;
+
+// Bind default framebuffer. Use this after drawing to offscreen FBO.
+- (void)bindDefaultFrameBuffer;
 
 @end
 

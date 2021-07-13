@@ -42,4 +42,8 @@ echo Output is in build/Release-iphonesimulator/libMetalANGLE_static.a
 rm -rf build
 xcodebuild -project OpenGLES.xcodeproj -target MetalANGLE_static -configuration Release -arch i386 -sdk iphonesimulator13.2 build
 echo Output is in build/Release-iphonesimulator/libMetalANGLE_static.a
+
+rm -rf build
+xcodebuild -project OpenGLES.xcodeproj -target MetalANGLE_static -configuration Release -arch arm64 -sdk iphonesimulator13.2 build
+echo Output is in build/Release-iphonesimulator/libMetalANGLE_static.a
 ```

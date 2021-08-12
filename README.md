@@ -15,6 +15,10 @@ Build Active Architecture Only: Yes
 Deployment Postprocessing: Yes
 Strip Linked Product: Yes
 Strip Style: Non-Global Symbols
+Perform Single-Object Prelink: Yes
+Preserve Private External Symbols: No
+Symbols Hidden By Default: No
+Inline Methods Hidden: Yes
 ```
 
 After changing the targets the static libraries can be built for all targets:
@@ -23,7 +27,6 @@ After changing the targets the static libraries can be built for all targets:
 cd ios/xcode
 
 ./fetchDependencies.sh
-
 
 xcodebuild -showsdks
 
@@ -49,3 +52,12 @@ echo Output is in build/Release-iphonesimulator/libMetalANGLE_static.a
 ```
 
 Note: to enable **Bitcode**, add `OTHER_CFLAGS="-fembed-bitcode"` to command line arguments for arm64 and armv7 iOS targets.
+
+
+In order to build libraries for Mac Catalyst, use the following commands:
+
+```
+xcodebuild -project OpenGLES.xcodeproj -scheme MetalANGLE_static -sdk macosx -configuration Release -destination 'platform=macOS,variant=Mac Catalyst' build SUPPORTS_MACCATALYST=YES
+lipo <PATH_TO_OUTPUT>/libMetalANGLE_static.a -extract x86_64 -output libMetalANGLE_static_x86_64.a
+lipo <PATH_TO_OUTPUT>/libMetalANGLE_static.a -extract arm64 -output libMetalANGLE_static_arm64.a
+```

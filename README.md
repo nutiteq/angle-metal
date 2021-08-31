@@ -8,7 +8,7 @@ In file src/libANGLE/renderer/gl/eagl/DisplayEAGL.mm
 change `kEAGLRenderingAPIOpenGLES3` to `kEAGLRenderingAPIOpenGLES2`.
 This updates target OpenGLES version to 2, which is required for old 32-bit iOS devices (iPhone 5).
 
-Set these parameters for both 'MetalANGLE' and 'MetalANGLE_ios' targets:
+Set these parameters for 'MetalANGLE_static' target and 'OpenGLES' project:
 
 ```
 Build Active Architecture Only: Yes
@@ -19,6 +19,15 @@ Perform Single-Object Prelink: Yes
 Preserve Private External Symbols: No
 Symbols Hidden By Default: No
 Inline Methods Hidden: Yes
+Preprocessor Macros: ANGLE_PLATFORM_EXPORT=, ANGLE_EXPORT=, ANGLE_UTIL_EXPORT=
+```
+
+**Important: enable C++ exceptions via following options** (otherwise exceptions may not work in *dependent* projects):
+
+```
+Enable C++ Exceptions: Yes
+Enable C++ Runtime Types: Yes
+Enable Objective C Exceptions: Yes
 ```
 
 After changing the targets the static libraries can be built for all targets:
